@@ -3,7 +3,7 @@ from aiogram.dispatcher.filters import Text
 from aiogram.utils.markdown import hbold, hlink
 from main import token
 from newevaparser import eva
-import  json
+import json
 import time
 
 
@@ -13,7 +13,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def start(massage: types.Message):
-    start_buttons = ['Корея', 'Парфумерія', 'Макіяж', 'Обличчя', 'Волосся', 'Дітям']
+    start_buttons = ['Корея', 'Чоловікам', 'Макіяж', 'Обличчя', 'Волосся', 'Дітям']
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*start_buttons)
     await massage.answer('Привет, выбери раздел', reply_markup=keyboard)
@@ -28,10 +28,12 @@ async def Korea(message: types.Message):
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
@@ -39,20 +41,22 @@ async def Korea(message: types.Message):
         await message.answer(card)
 
 
-@dp.message_handler(Text(equals='Парфумерія'))
+@dp.message_handler(Text(equals='Чоловікам'))
 async def Korea(message: types.Message):
-    await message.answer('Пожалуйста подождите...')
+    await message.answer('Пожалуйста подождите... Собираю информацию.')
 
-    eva('Парфумерія')
+    eva('Чоловікам')
 
     with open('result.json', encoding='utf-8') as file:
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
@@ -70,10 +74,12 @@ async def Korea(message: types.Message):
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
@@ -91,10 +97,12 @@ async def Korea(message: types.Message):
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
@@ -113,10 +121,12 @@ async def Korea(message: types.Message):
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
@@ -135,10 +145,12 @@ async def Korea(message: types.Message):
         data = json.load(file)
 
     for index, item in enumerate(data):
-        card = f'{hlink(item.get("productname"), item.get("url"))}\n'\
-            f'{hbold("Скидка: ")}{item.get("discont")}\n' \
-            f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n'\
-            f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
+        card = f'{item.get("img")}\n' \
+               f'{"_______________"}\n' \
+               f'{hlink(item.get("productname"), item.get("url"))}\n' \
+               f'{hbold("Скидка: ")}{item.get("discont")}\n' \
+               f'{hbold("Цена со скидкой: ")}{item.get("specprice")}\n' \
+               f'{hbold("Цена без скидки: ")}{item.get("regprice")}'
 
         if index%20 == 0:
             time.sleep(3)
