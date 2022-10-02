@@ -49,31 +49,10 @@ def eva(stoks = 'Чоловікам'):
             fix_hairline=True,
             )
 
-    #     url_stoks = {
-    #         'Perfumery': 'https://eva.ua/ua/promotion/type/1/',
-    #         'Makeup': 'https://eva.ua/ua/promotion/type/2/',
-    #         'Disguise': 'https://eva.ua/ua/promotion/type/3/',
-    #         'Hair': 'https://eva.ua/ua/promotion/type/4/',
-    #         'Children': 'https://eva.ua/ua/promotion/type/5/',
-    #         'Korea': 'https://eva.ua/ua/promotion/type/6/',
-    #         'Nails': 'https://eva.ua/ua/promotion/type/7/',
-    #         'Self_care': 'https://eva.ua/ua/promotion/type/8/',
-    #         'Body_and_bath': 'https://eva.ua/ua/promotion/type/9/',
-    #         'Household_chemicals': 'https://eva.ua/ua/promotion/type/10/',
-    #         'Goods_for_the_home': 'https://eva.ua/ua/promotion/type/12/',
-    #         'Clothes_accessories': 'https://eva.ua/ua/promotion/type/13/',
-    #         'Dermatocosmetics': 'https://eva.ua/ua/promotion/type/15/',
-    #         'Dietary_supplements': 'https://eva.ua/ua/promotion/type/16/',
-    #         'Professional_cosmetics': 'https://eva.ua/ua/promotion/type/17/',
-    #     }
+    
     driver.get(url)
     time.sleep(5)
-    # with io.open(f'index1.html', "w", encoding="utf-8") as file:
-    #     file.write(driver.page_source)
-    #     time.sleep(2)
-    #
-    # with open(f"index1.html", "r", encoding='utf-8') as file:
-    #     contents = file.read()
+   
     soup = BeautifulSoup(driver.page_source, 'lxml')
     try:
         pages_count = int(
@@ -167,29 +146,6 @@ def eva(stoks = 'Чоловікам'):
                             json.dump(result, file, indent=4, ensure_ascii=False)
                     except AttributeError:
                         continue
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        # print(f'https://eva.ua/ua{item_iurl}\n{item_productname}\n{item_discont}\n{item_specprice}\{item_regprice}')
-# if a != 'Акція!' or not None:
-
-
-        # with io.open(f'index{page}.html', "w", encoding="utf-8") as file:
-        #     file.write(driver.page_source)
-        #
-        # time.sleep(2)
-        # return pages_count
-
 
 
 
